@@ -79,7 +79,8 @@ fi
 echo "$(date "+%Y年%m月%d日%H时%M分%S秒") *设置 SWAPPINESS 值为: $SWAPPINESS_VALUE"
 echo "$SWAPPINESS_VALUE" > /dev/memcg/memory.swappiness
 echo "$SWAPPINESS_VALUE" > /dev/memcg/apps/memory.swappiness
-echo "$SWAPPINESS_VALUE" > /dev/memcg/system/memory.swappiness
+NEW_SWAPPINESS_VALUE=$((SWAPPINESS_VALUE / 2))
+echo "$NEW_SWAPPINESS_VALUE" > /dev/memcg/system/memory.swappiness
 echo "$(date "+%Y年%m月%d日%H时%M分%S秒") *设置 watermark_scale_factor 值为: $((377487360 / $total_ram_kb))"
 echo "$((377487360 / $total_ram_kb))" > /proc/sys/vm/watermark_scale_factor 
 
