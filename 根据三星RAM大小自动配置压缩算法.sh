@@ -36,13 +36,13 @@ else
   echo "$(date "+%Y年%m月%d日%H时%M分%S秒") *设置 RAM 大小为 $RAM GB"
 fi
 
-if [ "$RAM" -lt 4 ] && echo "$AVAILABLE_ALGS" | grep -q "zstd"; then
+if [ "$RAM" -lt 8 ] && echo "$AVAILABLE_ALGS" | grep -q "zstd"; then
     if su -c "echo zstd > $ALGORITHM"; then
         echo "$(date "+%Y年%m月%d日%H时%M分%S秒") *成功设置压缩算法为 zstd"
     else
         echo "$(date "+%Y年%m月%d日%H时%M分%S秒") *设置压缩算法为 zstd 失败"
     fi
-elif [ "$RAM" -ge 4 ] && echo "$AVAILABLE_ALGS" | grep -q "lz4"; then
+elif [ "$RAM" -ge 8 ] && echo "$AVAILABLE_ALGS" | grep -q "lz4"; then
     if su -c "echo lz4 > $ALGORITHM"; then
         echo "$(date "+%Y年%m月%d日%H时%M分%S秒") *成功设置压缩算法为 lz4"
     else
